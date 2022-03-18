@@ -32,6 +32,12 @@ public class Flight {
     @JoinColumn(name="location_id")
 	private Location location;
 	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="fleet_id")
+	private Fleet fleet;
+	
+	
 	
 	
 	public int getId() {
