@@ -18,6 +18,22 @@ public class Flight {
 	private Date departureTime=new Date();
 	private Date arrivalTime =new Date();
 	
+	
+	@OneToOne(mappedBy = "booking",fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Booking booking;
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="fare_id")
+	private Fare fare;
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="location_id")
+	private Location location;
+	
+	
+	
 	public int getId() {
 		return id;
 	}
