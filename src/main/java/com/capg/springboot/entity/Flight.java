@@ -1,10 +1,15 @@
 package com.capg.springboot.entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
+
+@Entity
+@Table(name="Flight")
 
 public class Flight {
 	
 	@Id
+	
 	private int id;
 	private String departureLocation;
 	private String arrivalLocation;
@@ -51,17 +56,31 @@ public class Flight {
 	{
 		this.arrivalTime=arrivalTime;
 	}
+	public Fleet getFleet() {
+		return fleet;
+	}
+	public void setFleet( Fleet fleet) {
+		this.fleet= fleet;
+	}
+	public FlightStatus getStatus() {
+		return status;
+	}
+	public void Flightstatus(FlightStatus status) {
+		this.status = status;
+	}
 	public Flight() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Flight(int id, String departureLocation, String arrivalLocation, Date departureTime,Date arrivalTime) {
+	public Flight(int id, String departureLocation, String arrivalLocation, Date departureTime,Date arrivalTime, FlightStatus status, Fleet  fleet) {
 		super();
 		this.id = id;
 		this.departureLocation = departureLocation;
 		this.arrivalLocation = arrivalLocation;
 		this.departureTime = departureTime;
 		this.arrivalTime=arrivalTime;
+		this.fleet= fleet;
+		this.status=status;
 		
 	}
 	
