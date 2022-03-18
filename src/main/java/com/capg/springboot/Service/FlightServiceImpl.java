@@ -1,64 +1,52 @@
-package com.capg.springboot.Service;
+ackage com.capg.springboot.Service;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capg.springboot.entity.Flight;
-import com.capg.springboot.exceptions.FlightNotFoundException;
-import com.capg.springboot.repository.FlightRepository;
+import com.capg.springboot.dto.*;
+import com.capg.springboot.entity.*;
+import com.capg.springboot.repository.*;
+
 
 
 
 @Service
 @Transactional
-
-public abstract class FlightServiceImpl implements FlightService{
+public class FlightServiceImpl implements FlightService {
 
 	@Autowired 
-	
 	private FlightRepository flightrepository;
 	
-	@override
-
-	public Flight addFlight(Flight add) {
+	@Override
+	public Flight addFlight(Flight flight) {
 		
-	   return  flightrepository.save(add);
-		
-		
+		flightrepository.save(flight);
+	return flight;
 	}
-	
-	@override
-	
-
-	public Flight modifyFlight(Flight add) {
-		
-		flightrepository.save(add);
-	    return add;
-	}
-	
-
-	
 	
 	@Override
-	
-	public  Flight viewFlightBy(String id)throws FlightNotFoundException{
+	public Flight modifyFlight(Flight flight) {
 		
-		Flight add=FlightRepository.findFlightById(id);
-		if(add==null)
-			throw new FlightNotFoundException("Flight not found");
-		return add;
+		flightrepository.save(flight);
+	return flight;
 	}
 	
-	@override
-	public Flight save(Flight add)
-	{
-		return null;
+	@Override
+	public Flight deleteFlight(Flight flight) {
+		
+		flightrepository.save(flight);
+	return flight;
 	}
+	
 }
 
-	
+
+
 
 
 
